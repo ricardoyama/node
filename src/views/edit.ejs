@@ -1,0 +1,33 @@
+<%- include( 'partials/_header') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/update/<%= data.idpersona %>" method="post">
+                        <div class="form-group">
+                            <input type="text" name="nombre" value="<%= data.nombre%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido_paterno" value="<%= data.apellido_paterno%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido_materno" value="<%= data.apellido_materno%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telefono" value="<%= data.telefono%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email" value="<%= data.email%>" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="/" class="btn btn-primary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+<%- include( 'partials/_footer') -%>

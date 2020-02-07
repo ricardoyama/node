@@ -1,0 +1,64 @@
+<%- include( 'partials/_header') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre(s)" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido_paterno" placeholder="Apellido Paterno" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido_materno" placeholder="Apellido Materno" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telefono" placeholder="Telefono" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email" placeholder="Correo Electrónico" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+          
+        </div>
+        <div class="col-xl-8">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td>Nombre(s)</td>
+                      <td>Apellido Paterno</td>
+                      <td>Apellido Materno</td>
+                      <td>Telefono</td>
+                      <td>Correo Electrónico</td>
+                      <td>Acciones</td>
+                    </tr>   
+                  </thead>
+                  <tbody>
+                    <% if (data) { %>
+                        <% for(var i = 0; i < data.length; i++) { %>
+                          <tr>
+                            <td><%= data[i].nombre %></td>
+                            <td><%= data[i].apellido_paterno %></td>
+                            <td><%= data[i].apellido_materno %></td>
+                            <td><%= data[i].telefono %></td>
+                            <td><%= data[i].email %></td>
+                            <td>
+                              <a href="/update/<%= data[i].idpersona %>" class="btn btn-info">Editar</a>
+                              <a href="/delete/<%= data[i].idpersona %>" class="btn btn-danger">Eliminar</a>
+                            </td>
+                          </tr>
+                        <% } %>
+                      <% } %>
+                  </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+<%- include( 'partials/_footer') -%>
