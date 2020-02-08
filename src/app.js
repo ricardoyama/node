@@ -10,7 +10,7 @@ const app = express();
 const personaRoutes = require('./routes/persona');
 
 //settings 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -33,5 +33,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //starting server
 app.listen(app.get('port'), () => {
-    console.log('Server on port 3000');
+    console.log('Server on port 80');
 });

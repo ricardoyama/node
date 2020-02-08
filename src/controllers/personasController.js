@@ -57,4 +57,48 @@ controller.save = (req, res) => {
     });
   };
 
+  controller.data = (req, res) => {
+    var dato = req.params.data;
+    console.log(dato);
+    
+    var  plotly = require('plotly')('RicardoYama','71QYpGeWceNtEFAxS06Q'),
+    token = 'hvx28cb6ub';
+    contador = 50;
+    
+    // helper function to get a nicely formatted date string
+    function getDateString() {
+        var time = new Date().getTime();
+        // 32400000 is (GMT+9 Japan)
+        // for your timezone just multiply +/-GMT by 36000000
+        var datestr = new Date(time -18000000).toISOString().replace(/T/, ' ').replace(/Z/, '');
+        return datestr;
+    }
+
+    var initdata = [{x:[], y:[], stream:{token:token, maxpoints: 500}}];
+    var initlayout = {fileopt : "extend", filename : "sensor-test"};
+    var data=6;
+
+    plotly.plot(initdata, initlayout, function (err, msg) {
+        if (err) return console.log(err)
+
+        console.log(msg);
+        var stream = plotly.stream(token, function (err, res) {
+            console.log(err, res);
+        });
+
+        
+            
+            var streamObject = JSON.stringify({ x : getDateString(), y : dato });
+            console.log(streamObject);
+            stream.write(streamObject+'\n');
+            
+    });
+    res.send('Sucess');
+  };
+
+  controller.home = (req, res) => {
+    res.render('datos')
+    
+  };
+
 module.exports = controller;
