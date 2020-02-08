@@ -17,11 +17,11 @@ app.set('views', path.join(__dirname, 'views'));
 //middlewares
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
-    host: 'node.ctzwf1oz7u97.us-east-1.rds.amazonaws.com',
-    user: 'root',
-    password: 'AmazonPass1',
+    host: 'host',
+    user: 'user',
+    password: 'password',
     port: 3306,
-    database: 'Admon_Redes'
+    database: 'bd'
   }, 'single'));
   app.use(express.urlencoded({extended: false}));
 
